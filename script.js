@@ -247,41 +247,38 @@ function createTicket() {
   }
   shuffle(names);
 
-names.forEach(n => {
-  const o = document.createElement("button");
-  o.className = "option";
-  o.textContent = n;
-o.onclick = (e) => {
-  e.stopPropagation();
-  const isCorrect = n === ticket.dataset.correct;
+  names.forEach(n => {
+    const o = document.createElement("button");
+    o.className = "option";
+    o.textContent = n;
+    o.onclick = (e) => {
+      e.stopPropagation();
+      const isCorrect = n === ticket.dataset.correct;
 
-  // Add blink class
-  const blinkClass = isCorrect ? "blink-green" : "blink-red";
-  ticket.classList.add(blinkClass);
+      // Add blink class
+      const blinkClass = isCorrect ? "blink-green" : "blink-red";
+      ticket.classList.add(blinkClass);
 
-  // Update score if correct
-  if (isCorrect) {
-    score += SCORE_VALUE;
-    updateScore();
-  }
-
-  // Wait for blink animation to finish, then fade out and remove
-  setTimeout(() => {
-    ticket.style.transition = "opacity 0.3s ease";
-    ticket.style.opacity = "0";
-
-    setTimeout(() => {
-      if (ticket && ticket.parentNode) {
-        ticket.remove();
+      // Update score if correct
+      if (isCorrect) {
+        score += SCORE_VALUE;
+        updateScore();
       }
-    }, 300); // Wait for fade to complete
-  }, 300); // Wait for blink animation to complete
-};
 
+      // Always fade out and remove the ticket
+      setTimeout(() => {
+        ticket.style.transition = "opacity 0.3s ease";
+        ticket.style.opacity = "0";
 
-  options.appendChild(o);
-});
-
+        setTimeout(() => {
+          if (ticket && ticket.parentNode) {
+            ticket.remove();
+          }
+        }, 300);
+      }, 300);
+    };
+    options.appendChild(o);
+  });
 
   const hurdle = document.createElement("button");
   hurdle.className = "hurdle";
