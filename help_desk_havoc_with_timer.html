@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Help Desk Havoc</title>
+<style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .ticket {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            padding: 10px;
+            cursor: move;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+        .ticket.escalated {
+            width: 350px;
+            height: 250px;
+            border-color: red;
+            box-shadow: 4px 4px 20px rgba(255,0,0,0.4);
+            z-index: 999;
+            opacity: 0.95;
+        }
+        .avatar-message {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+        }
+        .message {
+            flex-grow: 1;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        .btn {
+            padding: 8px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #d0d0d0;
+        }
+        .btn.malicious {
+            background-color: #ff4d4d;
+            color: white;
+        }
+    </style>
+</head>
+<body><div id="countdownTimer" style="position: fixed; top: 10px; right: 10px; font-size: 24px; font-weight: bold; background-color: #fff; padding: 10px; border: 2px solid #000; z-index: 9999;">Time Left: 05:00</div><div id="finalScoreDisplay" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; font-weight: bold; background-color: #fff; padding: 20px; border: 3px solid #000; z-index: 10000;"></div>
+<script>
+    let score = 0;
+    const errorOptions = [
+        "Restart PC",
+        "Clear Cache",
+        "Reset Password",
+        "Check Internet",
+        "Reinstall App"
+    ];
+
+    function createTicket() {
+        const ticket = document.createElement("div");
+        ticket.className = "ticket";
+
+        // Random position
+        ticket.style.top = Math.random() * (window.innerHeight - 220) + "px";
+        ticket.style.left = Math.random() * (window.innerWidth - 320) + "px";
+
+        // Avatar and message
+        const avatarMessage = document.createElement("div");
+        avatarMessage.className = "avatar-message";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+
+        const message = document.createElement("div");
+        message.className = "message";
+        message.textContent = "My VPN keeps disconnecting every 5 minutes!";
+
+        avatarMessage.appendChild(avatar);
+        avatarMessage.appendChild(message);
+        ticket.appendChild(avatarMessage);
+
+        // Buttons
+        const buttons = document.createElement("div");
+        buttons.className = "buttons";
+
+        const correctIndex = Math.floor(Math.random() * errorOptions.length);
+        const maliciousIndex = Math.floor(Math.random() * 6);
+
+        for (let i = 0; i < 6; i++) {
+            const btn = document.createElement("button");
+            btn.className = "btn";
+            if (i === maliciousIndex) {
+                btn.textContent = "Mark Malicious";
+                btn.classList.add("malicious");
+                btn.onclick = () => {
+                    ticket.remove();
+                };
+            } else {
+                const label = errorOptions[i % errorOptions.length];
+                btn.textContent = label;
+                btn.onclick = () => {
+                    if (i === correctIndex) {
+                        score++;
+                        console.log("Score:", score);
+                    }
+                    ticket.remove();
+                };
+            }
+            buttons.appendChild(btn);
+        }
+
+        ticket.appendChild(buttons);
+        document.body.appendChild(ticket);
+
+        makeDraggable(ticket);
+
+        // Escalation timer
+        setTimeout(() => {
+            ticket.classList.add("escalated");
+        }, 15000);
+    }
+
+    function makeDraggable(el) {
+        let offsetX = 0, offsetY = 0, isDragging = false;
+
+        el.addEventListener("mousedown", function(e) {
+            isDragging = true;
+            offsetX = e.clientX - el.offsetLeft;
+            offsetY = e.clientY - el.offsetTop;
+            el.style.zIndex = 1000;
+        });
+
+        document.addEventListener("mousemove", function(e) {
+            if (isDragging) {
+                el.style.left = (e.clientX - offsetX) + "px";
+                el.style.top = (e.clientY - offsetY) + "px";
+            }
+        });
+
+        document.addEventListener("mouseup", function() {
+            isDragging = false;
+        });
+    }
+
+    // Spawn tickets every 5 seconds
+    setInterval(createTicket, 5000);
+</script>
+<script>
+let timeLeft = 300; // 5 minutes in seconds
+let timerInterval = setInterval(() => {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    document.getElementById("countdownTimer").textContent = `Time Left: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    timeLeft--;
+
+    if (timeLeft < 0) {
+        clearInterval(timerInterval);
+        endGame();
+    }
+}, 1000);
+
+function endGame() {
+    // Stop spawning tickets
+    if (typeof stopSpawningTickets === "function") {
+        stopSpawningTickets();
+    }
+
+    // Remove all ticket elements
+    document.querySelectorAll(".ticket").forEach(ticket => ticket.remove());
+
+    // Display final score
+    let score = window.playerScore || 0;
+    let scoreDisplay = document.getElementById("finalScoreDisplay");
+    scoreDisplay.textContent = `Final Score: ${score}`;
+    scoreDisplay.style.display = "block";
+}
+</script></body>
+</html>
