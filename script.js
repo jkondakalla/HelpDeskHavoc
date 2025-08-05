@@ -251,19 +251,26 @@ function createTicket() {
     const o = document.createElement("button");
     o.className = "option";
     o.textContent = n;
-    o.onclick = e => {
+    o.onclick = (e) => {
   e.stopPropagation();
-  if (n === ticket.dataset.correct) {
+  const isCorrect = n === ticket.dataset.correct;
+
+  if (isCorrect) {
     score += SCORE_VALUE;
     updateScore();
     ticket.classList.add("correct");
   } else {
     ticket.classList.add("incorrect");
   }
+
+  // Ensure the ticket is removed after feedback
   setTimeout(() => {
-    ticket.remove();
-  }, 300); // Delay to show color flash
+    if (ticket && ticket.parentNode) {
+      ticket.remove();
+    }
+  }, 300);
 };
+
     options.appendChild(o);
   });
 
