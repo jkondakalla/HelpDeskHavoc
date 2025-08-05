@@ -251,32 +251,33 @@ function createTicket() {
     const o = document.createElement("button");
     o.className = "option";
     o.textContent = n;
-    o.onclick = (e) => {
-      e.stopPropagation();
-      const isCorrect = n === ticket.dataset.correct;
+o.onclick = (e) => {
+  e.stopPropagation();
+  const isCorrect = n === ticket.dataset.correct;
+  console.log("Clicked:", n, "Correct:", isCorrect);
 
-      // Add blink class
-      const blinkClass = isCorrect ? "blink-green" : "blink-red";
-      ticket.classList.add(blinkClass);
+  const blinkClass = isCorrect ? "blink-green" : "blink-red";
+  ticket.classList.add(blinkClass);
 
-      // Update score if correct
-      if (isCorrect) {
-        score += SCORE_VALUE;
-        updateScore();
+  if (isCorrect) {
+    score += SCORE_VALUE;
+    updateScore();
+  }
+
+  setTimeout(() => {
+    console.log("Fading out ticket");
+    ticket.style.transition = "opacity 0.3s ease";
+    ticket.style.opacity = "0";
+
+    setTimeout(() => {
+      console.log("Removing ticket");
+      if (ticket && ticket.parentNode) {
+        ticket.remove();
       }
+    }, 300);
+  }, 300);
+};
 
-      // Always fade out and remove the ticket
-      setTimeout(() => {
-        ticket.style.transition = "opacity 0.3s ease";
-        ticket.style.opacity = "0";
-
-        setTimeout(() => {
-          if (ticket && ticket.parentNode) {
-            ticket.remove();
-          }
-        }, 300);
-      }, 300);
-    };
     options.appendChild(o);
   });
 
