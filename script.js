@@ -251,28 +251,33 @@ names.forEach(n => {
   const o = document.createElement("button");
   o.className = "option";
   o.textContent = n;
-  o.onclick = (e) => {
-    e.stopPropagation();
-    const isCorrect = n === ticket.dataset.correct;
+o.onclick = (e) => {
+  e.stopPropagation();
+  const isCorrect = n === ticket.dataset.correct;
 
-    if (isCorrect) {
-      score += SCORE_VALUE;
-      updateScore();
-      ticket.classList.add("correct");
-    } else {
-      ticket.classList.add("incorrect");
-    }
+  // Add blink class
+  const blinkClass = isCorrect ? "blink-green" : "blink-red";
+  ticket.classList.add(blinkClass);
 
-    // Fade out and remove ticket
+  // Update score if correct
+  if (isCorrect) {
+    score += SCORE_VALUE;
+    updateScore();
+  }
+
+  // Wait for blink animation to finish, then fade out and remove
+  setTimeout(() => {
+    ticket.style.transition = "opacity 0.3s ease";
+    ticket.style.opacity = "0";
+
     setTimeout(() => {
-      ticket.style.opacity = "0"; // fade out
-      setTimeout(() => {
-        if (ticket && ticket.parentNode) {
-          ticket.remove();
-        }
-      }, 300); // wait for fade to finish
-    }, 100); // slight delay to show color change
-  };
+      if (ticket && ticket.parentNode) {
+        ticket.remove();
+      }
+    }, 300); // Wait for fade to complete
+  }, 300); // Wait for blink animation to complete
+};
+
 
   options.appendChild(o);
 });
