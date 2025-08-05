@@ -247,32 +247,36 @@ function createTicket() {
   }
   shuffle(names);
 
-  names.forEach(n => {
-    const o = document.createElement("button");
-    o.className = "option";
-    o.textContent = n;
-    o.onclick = (e) => {
-  e.stopPropagation();
-  const isCorrect = n === ticket.dataset.correct;
+names.forEach(n => {
+  const o = document.createElement("button");
+  o.className = "option";
+  o.textContent = n;
+  o.onclick = (e) => {
+    e.stopPropagation();
+    const isCorrect = n === ticket.dataset.correct;
 
-  if (isCorrect) {
-    score += SCORE_VALUE;
-    updateScore();
-    ticket.classList.add("correct");
-  } else {
-    ticket.classList.add("incorrect");
-  }
-
-  // Ensure the ticket is removed after feedback
-  setTimeout(() => {
-    if (ticket && ticket.parentNode) {
-      ticket.remove();
+    if (isCorrect) {
+      score += SCORE_VALUE;
+      updateScore();
+      ticket.classList.add("correct");
+    } else {
+      ticket.classList.add("incorrect");
     }
-  }, 300);
-};
 
-    options.appendChild(o);
-  });
+    // Fade out and remove ticket
+    setTimeout(() => {
+      ticket.style.opacity = "0"; // fade out
+      setTimeout(() => {
+        if (ticket && ticket.parentNode) {
+          ticket.remove();
+        }
+      }, 300); // wait for fade to finish
+    }, 100); // slight delay to show color change
+  };
+
+  options.appendChild(o);
+});
+
 
   const hurdle = document.createElement("button");
   hurdle.className = "hurdle";
