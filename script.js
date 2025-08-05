@@ -221,8 +221,8 @@ function createTicket() {
   const ticket = document.createElement("div");
   ticket.className = "ticket";
   ticket.style.position = "absolute";
-  ticket.style.left = Math.random() * (window.innerWidth - 260) + "px";
-  ticket.style.top = Math.random() * (window.innerHeight - 200) + "px";
+  ticket.style.left = Math.random() * 70 + 10 + "%";
+  ticket.style.top = Math.random() * 60 + 10 + "%";
   ticket.dataset.correct = cat.name;
   ticket.dataset.start = Date.now();
   ticket.style.zIndex = 10;
@@ -232,8 +232,7 @@ function createTicket() {
   avatar.style.background = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
   ticket.appendChild(avatar);
 
-  const message = document.createElement("div");
-  message.className = "message";
+  "message";
   message.textContent = msg;
   ticket.appendChild(message);
 
@@ -279,17 +278,12 @@ function createTicket() {
   hurdle.style.background = "red";
   hurdle.onclick = e => {
     e.stopPropagation();
-    ticket.style.transition = "opacity 0.3s ease";
-    ticket.style.opacity = "0";
-    setTimeout(() => {
-      if (ticket && ticket.parentNode) {
-        ticket.parentNode.removeChild(ticket);
-      }
-    }, 300);
+    ticket.remove();
   };
   options.appendChild(hurdle);
 
   ticket.appendChild(options);
+
   makeDraggable(ticket);
   area.appendChild(ticket);
 }
@@ -320,7 +314,7 @@ function makeDraggable(el) {
 function escalate() {
   const now = Date.now();
   document.querySelectorAll(".ticket").forEach(t => {
-    const age = now - parseInt(t.dataset.start);
+    const age = now - t.dataset.start;
     const p = Math.min(age / ESCALATE_TIME, 1);
     t.style.transform = `scale(${1 + p * 0.5})`;
     t.style.opacity = 0.4 + 0.6 * p;
