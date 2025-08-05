@@ -121,15 +121,12 @@ function createTicket() {
                 score += SCORE_VALUE;
                 updateScore();
             }
+            ticket.style.transition = "opacity 0.3s";
+            ticket.style.opacity = "0";
+            ticket.style.pointerEvents = "none";
             setTimeout(() => {
-                ticket.style.opacity = "0";
-                ticket.style.pointerEvents = "none";
-                setTimeout(() => {
-                    if (ticket.parentNode) {
-                        ticket.parentNode.removeChild(ticket);
-                        console.log("Ticket removed after resolution.");
-                    }
-                }, 300);
+                ticket.remove();
+                console.log("Ticket removed after resolution.");
             }, 300);
         };
         options.appendChild(btn);
