@@ -1,4 +1,3 @@
-// Help Desk Havoc - Clean Script
 const GAME_DURATION = 300000;
 const MIN_SPAWN = 500;
 const MAX_SPAWN = 5000;
@@ -18,6 +17,9 @@ function updateTimer() {
     if (timeLeft <= 0) {
         timeLeft = 0;
         gameOver = true;
+        console.log("Game Over triggered. Final score:", score);
+        document.getElementById("finalScore").textContent = score;
+        document.getElementById("gameOverScreen").style.display = "flex";
     }
     const m = Math.floor(timeLeft / 60000).toString().padStart(2, "0");
     const s = Math.floor((timeLeft % 60000) / 1000).toString().padStart(2, "0");
@@ -26,6 +28,7 @@ function updateTimer() {
 
 function updateScore() {
     scoreEl.textContent = score;
+    console.log("Score updated:", score);
 }
 
 function rand(arr) {
@@ -83,6 +86,8 @@ function createTicket() {
     ticket.dataset.start = Date.now();
     ticket.style.zIndex = 10;
 
+    console.log("Ticket created:", message, "Correct answer:", category.name);
+
     const avatar = document.createElement("div");
     avatar.className = "avatar";
     avatar.style.background = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
@@ -111,6 +116,7 @@ function createTicket() {
             e.stopPropagation();
             const isCorrect = name === ticket.dataset.correct;
             ticket.classList.add(isCorrect ? "blink-green" : "blink-red");
+            console.log("Option clicked:", name, "Correct:", isCorrect);
             if (isCorrect) {
                 score += SCORE_VALUE;
                 updateScore();
@@ -119,7 +125,10 @@ function createTicket() {
                 ticket.style.opacity = "0";
                 ticket.style.pointerEvents = "none";
                 setTimeout(() => {
-                    if (ticket.parentNode) ticket.parentNode.removeChild(ticket);
+                    if (ticket.parentNode) {
+                        ticket.parentNode.removeChild(ticket);
+                        console.log("Ticket removed after resolution.");
+                    }
                 }, 300);
             }, 300);
         };
@@ -133,6 +142,7 @@ function createTicket() {
     hurdle.onclick = (e) => {
         e.stopPropagation();
         ticket.remove();
+        console.log("Ticket removed via hurdle.");
     };
     options.appendChild(hurdle);
 
@@ -146,6 +156,7 @@ function spawnLoop() {
     createTicket();
     const ratio = timeLeft / GAME_DURATION;
     const delay = MIN_SPAWN + (MAX_SPAWN - MIN_SPAWN) * ratio * Math.random();
+    console.log("Next ticket spawn in:", Math.floor(delay), "ms");
     setTimeout(spawnLoop, delay);
 }
 
