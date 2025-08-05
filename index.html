@@ -71,7 +71,8 @@
         }
     </style>
 </head>
-<body><div id="countdownTimer" style="position: fixed; top: 10px; right: 10px; font-size: 24px; font-weight: bold; background-color: #fff; padding: 10px; border: 2px solid #000; z-index: 9999;">Time Left: 05:00</div><div id="finalScoreDisplay" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; font-weight: bold; background-color: #fff; padding: 20px; border: 3px solid #000; z-index: 10000;"></div>
+<body>
+<div id="score" style="position: absolute; top: 10px; left: 10px; font-size: 24px; color: white;">Score: 0</div><div id="countdownTimer" style="position: fixed; top: 10px; right: 10px; font-size: 24px; font-weight: bold; background-color: #fff; padding: 10px; border: 2px solid #000; z-index: 9999;">Time Left: 05:00</div><div id="finalScoreDisplay" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; font-weight: bold; background-color: #fff; padding: 20px; border: 3px solid #000; z-index: 10000;"></div>
 <script>
     let score = 0;
     const errorOptions = [
@@ -200,5 +201,49 @@ function endGame() {
     scoreDisplay.textContent = `Final Score: ${score}`;
     scoreDisplay.style.display = "block";
 }
-</script></body>
+</script><script src="tickets.js"></script>
+
+<script>
+let score = 0;
+const scoreDisplay = document.getElementById("score");
+
+function loadTicket() {
+    const ticket = tickets[Math.floor(Math.random() * tickets.length)];
+    const container = document.getElementById("ticket-container");
+    container.innerHTML = "";
+
+    const message = document.createElement("div");
+    message.textContent = ticket.message;
+    message.style.marginBottom = "20px";
+    container.appendChild(message);
+
+    const shuffledChoices = ticket.choices.sort(() => Math.random() - 0.5);
+    shuffledChoices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.textContent = choice;
+        btn.style.margin = "5px";
+        btn.onclick = () => {
+            if (choice === ticket.correct) {
+                score += 10;
+                scoreDisplay.textContent = "Score: " + score;
+            }
+            loadTicket();
+        };
+        container.appendChild(btn);
+    });
+}
+
+window.onload = () => {
+    const container = document.createElement("div");
+    container.id = "ticket-container";
+    container.style.position = "absolute";
+    container.style.top = "60px";
+    container.style.left = "10px";
+    container.style.color = "white";
+    document.body.appendChild(container);
+    loadTicket();
+};
+</script>
+
+</body>
 </html>
