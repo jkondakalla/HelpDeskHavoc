@@ -230,12 +230,12 @@ function createTicket() {
   const avatar = document.createElement("div");
   avatar.className = "avatar";
   avatar.style.background = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
-ticket.appendChild(avatar);
+  ticket.appendChild(avatar);
 
-const message = document.createElement("div");
-message.className = "message";
-message.textContent = msg;
-ticket.appendChild(message);
+  const message = document.createElement("div");
+  message.className = "message";
+  message.textContent = msg;
+  ticket.appendChild(message);
 
   const options = document.createElement("div");
   options.className = "options";
@@ -263,6 +263,7 @@ ticket.appendChild(message);
       setTimeout(() => {
         ticket.style.transition = "opacity 0.3s ease";
         ticket.style.opacity = "0";
+        ticket.style.pointerEvents = "none"; // Prevent interaction after fade
         setTimeout(() => {
           if (ticket && ticket.parentNode) {
             ticket.parentNode.removeChild(ticket);
@@ -315,7 +316,7 @@ function makeDraggable(el) {
 function escalate() {
   const now = Date.now();
   document.querySelectorAll(".ticket").forEach(t => {
-    const age = now - t.dataset.start;
+    const age = now - Number(t.dataset.start); // Fix: convert to number
     const p = Math.min(age / ESCALATE_TIME, 1);
     t.style.transform = `scale(${1 + p * 0.5})`;
     t.style.opacity = 0.4 + 0.6 * p;
@@ -352,3 +353,4 @@ function gameLoop() {
 }
 
 gameLoop();
+
