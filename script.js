@@ -230,11 +230,12 @@ function createTicket() {
   const avatar = document.createElement("div");
   avatar.className = "avatar";
   avatar.style.background = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
-  ticket.appendChild(avatar);
+ticket.appendChild(avatar);
 
-  "message";
-  message.textContent = msg;
-  ticket.appendChild(message);
+const message = document.createElement("div");
+message.className = "message";
+message.textContent = msg;
+ticket.appendChild(message);
 
   const options = document.createElement("div");
   options.className = "options";
