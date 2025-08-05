@@ -1,0 +1,99 @@
+/* General Layout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#game-info {
+  font-size: 1.2rem;
+}
+
+main#game-area {
+  position: relative;
+  height: 80vh;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: #ecf0f1;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #bdc3c7;
+}
+
+/* Ticket Styling */
+.ticket {
+  position: absolute;
+  width: 300px;
+  min-height: 120px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  cursor: move;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.ticket .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3498db;
+  float: left;
+  margin-right: 10px;
+}
+
+.ticket .message {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  clear: both;
+}
+
+/* Resolution Buttons */
+.ticket .options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.ticket .option {
+  background-color: #eee;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.ticket .option:hover {
+  background-color: #ddd;
+}
+
+.ticket .option.hurdle {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.ticket .option.hurdle:hover {
+  background-color: #c0392b;
+}
