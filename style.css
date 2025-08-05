@@ -121,3 +121,24 @@ body {
   opacity: 1;
   z-index: 150;
 }
+
+.blink-green {
+  animation: blinkGreen 0.3s ease;
+}
+
+.blink-red {
+  animation: blinkRed 0.3s ease;
+}
+
+@keyframes blinkGreen {
+  0% { background-color: #2f3136; }
+  50% { background-color: #4caf50; }
+  100% { background-color: #2f3136; }
+}
+
+@keyframes blinkRed {
+  0% { background-color: #2f3136; }
+  50% { background-color: #f44336; }
+  100% { background-color: #2f3136; }
+}
+
