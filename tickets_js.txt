@@ -1,0 +1,1442 @@
+const tickets = [
+  {
+    "message": "\u201cSomeone renamed all the desktop icons to emojis.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cThe coffee machine now requires a login.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Forward to Legal",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cMy mouse is taped to the ceiling.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Forward to Legal"
+    ]
+  },
+  {
+    "message": "\u201cThe help desk phone rings once, then plays elevator music.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Turn It Off and Back On",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cThe intern just asked if Excel can run Doom.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Unplug Everything",
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor brightness is at 200% and locked.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Revoke Admin Rights",
+      "Blame the Cloud",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cThe shared drive is now called \u2018DO NOT OPEN.\u2019\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Forward to Legal",
+      "Unplug Everything",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy keyboard types in reverse.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cThe intern said they \u2018optimized\u2019 my PC and now it won\u2019t boot.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Blame the Intern",
+      "Offer Free Stickers",
+      "Forward to Legal",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThere\u2019s a sticky note on my webcam that says \u2018Trust No One.\u2019\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Revoke Admin Rights",
+      "Clear Browser History",
+      "Mark Malicious",
+      "Turn It Off and Back On",
+      "Run Diagnostics and Hope",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cMy desktop background is now a meme of me.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Unplug Everything",
+      "Forward to Legal",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Blame the Intern",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cThe intern said they fixed the printer. It\u2019s smoking.\u201d",
+    "correct": "Blame the Intern",
+    "choices": [
+      "Turn It Off and Back On",
+      "Blame the Cloud",
+      "Unplug Everything",
+      "Forward to Legal",
+      "Mark Malicious",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cFacilities still hasn\u2019t fixed the flickering lights.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Offer Free Stickers",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI\u2019ve asked for access to the budget folder five times.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Blame the Cloud",
+      "Run Diagnostics and Hope",
+      "Blame the Intern",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cThe vendor keeps sending invoices in .bmp format.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Forward to Legal",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cMy manager keeps forwarding me spam \u2018just in case.\u2019\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Unplug Everything",
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe team lead muted me in every meeting.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Unplug Everything",
+      "Revoke Admin Rights",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cI got removed from the project Slack channel again.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cThe new hire keeps replying-all to every email.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Blame the Cloud",
+      "Blame the Intern",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Forward to Legal"
+    ]
+  },
+  {
+    "message": "\u201cI was assigned a task due yesterday.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Clear Browser History",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cThe client keeps calling me \u2018Tech Support\u2019.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Clear Browser History",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cSomeone keeps deleting my calendar events.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Blame the Cloud",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cI got CC\u2019d on a 200-email thread about lunch.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Offer Free Stickers",
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy request for a second monitor was denied with a meme.\u201d",
+    "correct": "Send a Strongly Worded Email",
+    "choices": [
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy webcam froze mid-meeting and won\u2019t come back.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Clear Browser History",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe app crashes every time I open it.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Forward to Legal",
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Turn It Off and Back On",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy keyboard stopped working after I spilled coffee.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Offer Free Stickers",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cMy screen is stuck in grayscale.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Clear Browser History",
+      "Blame the Intern",
+      "Turn It Off and Back On",
+      "Offer Free Stickers",
+      "Mark Malicious",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cThe sound randomly cuts out during calls.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Revoke Admin Rights",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy mouse pointer is lagging like it\u2019s underwater.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Blame the Cloud",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe VPN disconnects every 3 minutes.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Blame the Cloud",
+      "Revoke Admin Rights",
+      "Offer Free Stickers",
+      "Turn It Off and Back On",
+      "Run Diagnostics and Hope",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy laptop won\u2019t wake up unless I close the lid first.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Turn It Off and Back On",
+      "Clear Browser History",
+      "Forward to Legal",
+      "Blame the Intern",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe projector shows everything upside down.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Clear Browser History",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cMy phone won\u2019t stop vibrating, even when off.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Forward to Legal",
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Revoke Admin Rights",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cThe printer prints blank pages unless I whisper to it.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor flickers when I scroll too fast.\u201d",
+    "correct": "Turn It Off and Back On",
+    "choices": [
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Turn It Off and Back On",
+      "Unplug Everything",
+      "Blame the Intern",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy desk got moved next to the bathroom.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Forward to Legal",
+      "Turn It Off and Back On",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI didn\u2019t get the team hoodie everyone else got.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy name is misspelled on my ID badge.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Unplug Everything",
+      "Clear Browser History",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Offer Free Stickers",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cThe break room fridge smells like betrayal.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Clear Browser History",
+      "Offer Free Stickers",
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cI wasn\u2019t invited to the team lunch.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Unplug Everything",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy Slack emoji privileges were revoked.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Clear Browser History",
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Offer Free Stickers",
+      "Turn It Off and Back On",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cThe vending machine ate my dollar again.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Blame the Cloud",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy chair slowly sinks during meetings.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cI got assigned a cubicle with no power outlets.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Mark Malicious",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor is smaller than everyone else\u2019s.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Mark Malicious",
+      "Blame the Intern",
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Offer Free Stickers",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cI asked for a whiteboard and got a sticky note.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Blame the Cloud",
+      "Offer Free Stickers",
+      "Forward to Legal",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cMy desk plant was replaced with a rock.\u201d",
+    "correct": "Offer Free Stickers",
+    "choices": [
+      "Forward to Legal",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Send a Strongly Worded Email"
+    ]
+  },
+  {
+    "message": "\u201cI was asked to sign something in Latin.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Forward to Legal",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cSomeone emailed me a contract with no context.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Send a Strongly Worded Email",
+      "Forward to Legal",
+      "Clear Browser History",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cI got a cease-and-desist from a competitor.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Forward to Legal",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Turn It Off and Back On",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy coworker threatened to \u2018sue the cloud.\u2019\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Forward to Legal"
+    ]
+  },
+  {
+    "message": "\u201cI received a spreadsheet labeled \u2018Confidential $$$\u2019.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Blame the Intern",
+      "Turn It Off and Back On",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe client wants us to \u2018bend the rules\u2019 a little.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Mark Malicious",
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Unplug Everything",
+      "Forward to Legal",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cSomeone sent me a file named \u2018evidence.zip\u2019.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Blame the Cloud",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Unplug Everything",
+      "Forward to Legal",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI was CC\u2019d on a legal dispute between two departments.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Forward to Legal",
+      "Send a Strongly Worded Email",
+      "Blame the Cloud",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cA vendor asked for my personal bank info.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Unplug Everything",
+      "Turn It Off and Back On",
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Run Diagnostics and Hope",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI found a folder called \u2018Lawsuit Prep\u2019 on the shared drive.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Forward to Legal",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cMy email signature was changed to \u2018Chief Liability Officer.\u2019\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Turn It Off and Back On",
+      "Forward to Legal",
+      "Offer Free Stickers",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cSomeone keeps sending contracts in Comic Sans.\u201d",
+    "correct": "Forward to Legal",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cMy browser homepage is now a dating site.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Blame the Intern",
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cI clicked a link and now everything is in Spanish.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Blame the Intern",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Clear Browser History",
+      "Blame the Cloud",
+      "Forward to Legal"
+    ]
+  },
+  {
+    "message": "\u201cMy bookmarks are all conspiracy theories.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Blame the Intern",
+      "Clear Browser History",
+      "Forward to Legal",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cThe autofill keeps suggesting \u2018Buy Crypto Fast.\u2019\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy browser opens 12 tabs on startup \u2014 all ads.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cI searched for \u2018printer drivers\u2019 and got malware.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Unplug Everything",
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Clear Browser History",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy browser history includes sites I\u2019ve never visited.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Clear Browser History",
+      "Blame the Cloud",
+      "Turn It Off and Back On",
+      "Send a Strongly Worded Email",
+      "Unplug Everything",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI keep getting pop-ups about \u2018winning a free iPad.\u2019\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Offer Free Stickers",
+      "Unplug Everything",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cMy browser toolbar has 8 toolbars stacked.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Blame the Cloud",
+      "Revoke Admin Rights",
+      "Turn It Off and Back On",
+      "Send a Strongly Worded Email",
+      "Clear Browser History",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy browser keeps redirecting to a cat video blog.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Mark Malicious",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Send a Strongly Worded Email",
+      "Clear Browser History",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cI typed \u2018help desk\u2019 and got a pizza coupon.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Clear Browser History",
+      "Blame the Cloud",
+      "Send a Strongly Worded Email",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy browser says \u2018You\u2019ve been hacked!\u2019 in Comic Sans.\u201d",
+    "correct": "Clear Browser History",
+    "choices": [
+      "Clear Browser History",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cI gave myself admin and now I can\u2019t log in.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Forward to Legal",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cI renamed the Wi-Fi to \u2018Free Virus\u2019 and now no one can connect.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Turn It Off and Back On",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cI deleted the HR folder thinking it was a duplicate.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Mark Malicious",
+      "Offer Free Stickers",
+      "Blame the Cloud",
+      "Unplug Everything",
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email"
+    ]
+  },
+  {
+    "message": "\u201cI installed a theme that turned everything neon green.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Forward to Legal",
+      "Offer Free Stickers",
+      "Revoke Admin Rights",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI tried to \u2018optimize\u2019 the network and now it\u2019s gone.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Revoke Admin Rights",
+      "Blame the Intern",
+      "Forward to Legal",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cI changed my permissions and now I\u2019m locked out of Slack.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Clear Browser History",
+      "Offer Free Stickers",
+      "Revoke Admin Rights",
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cI gave everyone access to the payroll spreadsheet by accident.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Unplug Everything",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Forward to Legal",
+      "Blame the Intern",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cI disabled antivirus to speed things up.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Unplug Everything",
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Blame the Cloud",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cI made myself \u2018Super Admin\u2019 and now the system won\u2019t boot.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Mark Malicious",
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Blame the Cloud",
+      "Turn It Off and Back On",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cI removed the firewall because it was \u2018too restrictive.\u2019\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Blame the Intern",
+      "Revoke Admin Rights",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI tried to merge two accounts and deleted both.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Blame the Intern",
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cI edited the group policy and now printers are banned.\u201d",
+    "correct": "Revoke Admin Rights",
+    "choices": [
+      "Clear Browser History",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy synced folders are empty again.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Clear Browser History",
+      "Revoke Admin Rights",
+      "Mark Malicious",
+      "Offer Free Stickers",
+      "Send a Strongly Worded Email",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cGoogle Drive says I\u2019m offline but I\u2019m clearly not.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cMy files disappeared after I clicked \u2018Sync Now.\u2019\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Offer Free Stickers",
+      "Turn It Off and Back On",
+      "Clear Browser History",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe cloud backup restored the wrong version.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Forward to Legal",
+      "Blame the Cloud",
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cMy calendar events are duplicated across three time zones.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Unplug Everything",
+      "Mark Malicious",
+      "Turn It Off and Back On",
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cThe shared doc keeps reverting to last week\u2019s version.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Forward to Legal",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy OneDrive says \u2018Sync Complete\u2019 but nothing\u2019s there.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Revoke Admin Rights",
+      "Forward to Legal",
+      "Offer Free Stickers",
+      "Turn It Off and Back On",
+      "Mark Malicious",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cI uploaded a file and it turned into a .dat.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Blame the Cloud",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cThe cloud says I\u2019m out of space, but I only have one file.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Turn It Off and Back On",
+      "Clear Browser History",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Offer Free Stickers",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy cloud folder is now named \u2018Untitled (1)\u2019 and empty.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Blame the Cloud",
+      "Forward to Legal",
+      "Run Diagnostics and Hope",
+      "Blame the Intern",
+      "Revoke Admin Rights",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe cloud keeps asking me to sign in every 5 minutes.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Forward to Legal",
+      "Offer Free Stickers",
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email",
+      "Mark Malicious",
+      "Blame the Cloud"
+    ]
+  },
+  {
+    "message": "\u201cMy files are syncing to someone else\u2019s account.\u201d",
+    "correct": "Blame the Cloud",
+    "choices": [
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Blame the Cloud",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy laptop sounds like it\u2019s grinding coffee.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Forward to Legal",
+      "Mark Malicious",
+      "Unplug Everything",
+      "Blame the Intern",
+      "Send a Strongly Worded Email"
+    ]
+  },
+  {
+    "message": "\u201cThe screen flickers when I open Excel.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Revoke Admin Rights",
+      "Send a Strongly Worded Email",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy mouse moves on its own sometimes.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy speakers make a popping sound every few minutes.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Forward to Legal",
+      "Mark Malicious",
+      "Offer Free Stickers",
+      "Blame the Cloud",
+      "Run Diagnostics and Hope",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy fan runs at full speed even when idle.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On",
+      "Unplug Everything",
+      "Blame the Cloud",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy webcam turns on randomly.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Mark Malicious",
+      "Blame the Intern",
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy battery dropped from 80% to 2% in 10 seconds.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Clear Browser History",
+      "Run Diagnostics and Hope",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Blame the Intern"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor flashes green when I scroll.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Blame the Intern",
+      "Offer Free Stickers",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights",
+      "Clear Browser History",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy keyboard types double letters.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Blame the Cloud",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Unplug Everything",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope"
+    ]
+  },
+  {
+    "message": "\u201cMy PC freezes when I open more than two tabs.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Clear Browser History",
+      "Unplug Everything",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy cursor disappears when I open Outlook.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Forward to Legal",
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cMy laptop smells like burnt toast.\u201d",
+    "correct": "Run Diagnostics and Hope",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Blame the Intern",
+      "Blame the Cloud",
+      "Send a Strongly Worded Email",
+      "Clear Browser History"
+    ]
+  },
+  {
+    "message": "\u201cThe projector won\u2019t turn off and keeps flashing blue.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Blame the Intern",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cMy docking station made a popping sound.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Turn It Off and Back On",
+      "Blame the Cloud",
+      "Blame the Intern",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cThe lights flicker when I plug in my charger.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Forward to Legal",
+      "Mark Malicious",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor buzzes when I touch the mouse.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Mark Malicious",
+      "Offer Free Stickers",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Unplug Everything",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy keyboard shocks me occasionally.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Mark Malicious",
+      "Unplug Everything",
+      "Run Diagnostics and Hope",
+      "Offer Free Stickers",
+      "Clear Browser History",
+      "Send a Strongly Worded Email"
+    ]
+  },
+  {
+    "message": "\u201cThe printer won\u2019t stop printing blank pages.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Blame the Intern",
+      "Revoke Admin Rights",
+      "Clear Browser History",
+      "Mark Malicious",
+      "Forward to Legal",
+      "Unplug Everything"
+    ]
+  },
+  {
+    "message": "\u201cMy speakers hum when the fridge turns on.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Run Diagnostics and Hope",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy laptop only charges if I hold the cable just right.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Mark Malicious",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Run Diagnostics and Hope",
+      "Turn It Off and Back On"
+    ]
+  },
+  {
+    "message": "\u201cThe power strip smells like ozone.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Clear Browser History",
+      "Send a Strongly Worded Email",
+      "Unplug Everything",
+      "Blame the Intern",
+      "Mark Malicious",
+      "Revoke Admin Rights"
+    ]
+  },
+  {
+    "message": "\u201cMy monitor turns off when I plug in my phone.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Blame the Cloud",
+      "Send a Strongly Worded Email",
+      "Revoke Admin Rights",
+      "Unplug Everything",
+      "Blame the Intern",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy desk lamp resets my router when turned on.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Run Diagnostics and Hope",
+      "Unplug Everything",
+      "Blame the Cloud",
+      "Send a Strongly Worded Email",
+      "Blame the Intern",
+      "Mark Malicious"
+    ]
+  },
+  {
+    "message": "\u201cMy mouse only works when the fan is off.\u201d",
+    "correct": "Unplug Everything",
+    "choices": [
+      "Revoke Admin Rights",
+      "Run Diagnostics and Hope",
+      "Blame the Cloud",
+      "Unplug Everything",
+      "Mark Malicious",
+      "Clear Browser History"
+    ]
+  }
+];
