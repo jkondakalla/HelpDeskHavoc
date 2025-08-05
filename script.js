@@ -252,25 +252,38 @@ function createTicket() {
     o.className = "option";
     o.textContent = n;
     o.onclick = (e) => {
-      e.stopPropagation();
-      const isCorrect = n === ticket.dataset.correct;
-      const blinkClass = isCorrect ? "blink-green" : "blink-red";
-      ticket.classList.add(blinkClass);
-      if (isCorrect) {
-        score += SCORE_VALUE;
-        updateScore();
+  e.stopPropagation();
+  const isCorrect = n === ticket.dataset.correct;
+  const blinkClass = isCorrect ? "blink-green" : "blink-red";
+  console.log(`Option clicked: ${n}`);
+  console.log(`Correct answer: ${ticket.dataset.correct}`);
+  console.log(`Is correct: ${isCorrect}`);
+
+  ticket.classList.add(blinkClass);
+
+  if (isCorrect) {
+    score += SCORE_VALUE;
+    console.log(`Score updated to: ${score}`);
+    updateScore();
+  }
+
+  setTimeout(() => {
+    console.log("Starting ticket fade out...");
+    ticket.style.transition = "opacity 0.3s ease";
+    ticket.style.opacity = "0";
+    ticket.style.pointerEvents = "none"; // Prevent interaction after fade
+
+    setTimeout(() => {
+      if (ticket && ticket.parentNode) {
+        console.log("Removing ticket from DOM.");
+        ticket.parentNode.removeChild(ticket);
+      } else {
+        console.log("Ticket already removed or parent missing.");
       }
-      setTimeout(() => {
-        ticket.style.transition = "opacity 0.3s ease";
-        ticket.style.opacity = "0";
-        ticket.style.pointerEvents = "none"; // Prevent interaction after fade
-        setTimeout(() => {
-          if (ticket && ticket.parentNode) {
-            ticket.parentNode.removeChild(ticket);
-          }
-        }, 300);
-      }, 300);
-    };
+    }, 300);
+  }, 300);
+};
+
     options.appendChild(o);
   });
 
