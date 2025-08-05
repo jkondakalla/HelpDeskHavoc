@@ -46,6 +46,16 @@ body {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.ticket.correct {
+  background-color: #4caf50 !important; /* Green */
+  transition: background-color 0.3s ease;
+}
+
+.ticket.incorrect {
+  background-color: #f44336 !important; /* Red */
+  transition: background-color 0.3s ease;
+}
+
 .avatar {
   width: 40px;
   height: 40px;
