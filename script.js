@@ -252,15 +252,18 @@ function createTicket() {
     o.className = "option";
     o.textContent = n;
     o.onclick = e => {
-      e.stopPropagation();
-      if (n === ticket.dataset.correct) {
-        score += SCORE_VALUE;
-        updateScore();
-        ticket.remove();
-      } else {
-        ticket.remove();
-      }
-    };
+  e.stopPropagation();
+  if (n === ticket.dataset.correct) {
+    score += SCORE_VALUE;
+    updateScore();
+    ticket.classList.add("correct");
+  } else {
+    ticket.classList.add("incorrect");
+  }
+  setTimeout(() => {
+    ticket.remove();
+  }, 300); // Delay to show color flash
+};
     options.appendChild(o);
   });
 
