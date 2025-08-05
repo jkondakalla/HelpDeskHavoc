@@ -184,7 +184,6 @@ const categories = [
     ]
   }
 ];
-
 function updateTimer() {
   timeLeft -= 1000;
   if (timeLeft < 0) {
@@ -214,8 +213,7 @@ function shuffle(a) {
 function createTicket() {
   if (gameOver) return;
 
-  const catIndex = Math.floor(Math.random() * categories.length);
-  const cat = categories[catIndex];
+  const cat = rand(categories);
   const msg = rand(cat.messages);
 
   const ticket = document.createElement("div");
@@ -252,38 +250,25 @@ function createTicket() {
     o.className = "option";
     o.textContent = n;
     o.onclick = (e) => {
-  e.stopPropagation();
-  const isCorrect = n === ticket.dataset.correct;
-  const blinkClass = isCorrect ? "blink-green" : "blink-red";
-  console.log(`Option clicked: ${n}`);
-  console.log(`Correct answer: ${ticket.dataset.correct}`);
-  console.log(`Is correct: ${isCorrect}`);
-
-  ticket.classList.add(blinkClass);
-
-  if (isCorrect) {
-    score += SCORE_VALUE;
-    console.log(`Score updated to: ${score}`);
-    updateScore();
-  }
-
-  setTimeout(() => {
-    console.log("Starting ticket fade out...");
-    ticket.style.transition = "opacity 0.3s ease";
-    ticket.style.opacity = "0";
-    ticket.style.pointerEvents = "none"; // Prevent interaction after fade
-
-    setTimeout(() => {
-      if (ticket && ticket.parentNode) {
-        console.log("Removing ticket from DOM.");
-        ticket.parentNode.removeChild(ticket);
-      } else {
-        console.log("Ticket already removed or parent missing.");
+      e.stopPropagation();
+      const isCorrect = n === ticket.dataset.correct;
+      const blinkClass = isCorrect ? "blink-green" : "blink-red";
+      ticket.classList.add(blinkClass);
+      if (isCorrect) {
+        score += SCORE_VALUE;
+        updateScore();
       }
-    }, 300);
-  }, 300);
-};
-
+      setTimeout(() => {
+        ticket.style.transition = "opacity 0.3s ease";
+        ticket.style.opacity = "0";
+        ticket.style.pointerEvents = "none";
+        setTimeout(() => {
+          if (ticket && ticket.parentNode) {
+            ticket.parentNode.removeChild(ticket);
+          }
+        }, 300);
+      }, 300);
+    };
     options.appendChild(o);
   });
 
@@ -291,22 +276,19 @@ function createTicket() {
   hurdle.className = "hurdle";
   hurdle.textContent = "Mark Malicious";
   hurdle.style.background = "red";
-  hurdle.onclick = e => {
+  hurdle.onclick = (e) => {
     e.stopPropagation();
     ticket.remove();
   };
   options.appendChild(hurdle);
 
   ticket.appendChild(options);
-
   makeDraggable(ticket);
   area.appendChild(ticket);
 }
 
 function makeDraggable(el) {
-  let offsetX = 0,
-    offsetY = 0,
-    isDown = false;
+  let offsetX = 0, offsetY = 0, isDown = false;
 
   el.addEventListener("pointerdown", e => {
     isDown = true;
@@ -329,7 +311,7 @@ function makeDraggable(el) {
 function escalate() {
   const now = Date.now();
   document.querySelectorAll(".ticket").forEach(t => {
-    const age = now - Number(t.dataset.start); // Fix: convert to number
+    const age = now - Number(t.dataset.start);
     const p = Math.min(age / ESCALATE_TIME, 1);
     t.style.transform = `scale(${1 + p * 0.5})`;
     t.style.opacity = 0.4 + 0.6 * p;
@@ -341,7 +323,7 @@ function spawnLoop() {
   if (gameOver) return;
   createTicket();
   const ratio = timeLeft / GAME_DURATION;
-  const delay = MIN_SPAWN + (MAX_SPAWN - MIN_SPAWN) * ratio;
+  const delay = MIN_SPAWN + (MAX_SPAWN - MIN_SPAWN) * ratio * Math.random();
   setTimeout(spawnLoop, delay);
 }
 
@@ -366,4 +348,3 @@ function gameLoop() {
 }
 
 gameLoop();
-
