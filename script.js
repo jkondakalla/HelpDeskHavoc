@@ -254,29 +254,23 @@ function createTicket() {
 o.onclick = (e) => {
   e.stopPropagation();
   const isCorrect = n === ticket.dataset.correct;
-  console.log("Clicked:", n, "Correct:", isCorrect);
-
   const blinkClass = isCorrect ? "blink-green" : "blink-red";
   ticket.classList.add(blinkClass);
-
   if (isCorrect) {
     score += SCORE_VALUE;
     updateScore();
   }
-
   setTimeout(() => {
-    console.log("Fading out ticket");
     ticket.style.transition = "opacity 0.3s ease";
     ticket.style.opacity = "0";
-
     setTimeout(() => {
-      console.log("Removing ticket");
       if (ticket && ticket.parentNode) {
-        ticket.remove();
+        ticket.parentNode.removeChild(ticket); // More reliable than .remove()
       }
     }, 300);
   }, 300);
 };
+
 
     options.appendChild(o);
   });
