@@ -1,4 +1,3 @@
-
 const gameArea = document.getElementById("gameArea");
 const scoreDisplay = document.querySelector(".score");
 const timerDisplay = document.getElementById("timer");
@@ -31,33 +30,32 @@ function createTicket() {
   const ticket = document.createElement("div");
   ticket.className = "ticket";
 
-  // Make the ticket draggable
-  ticket.onmousedown = function (e) {
-    ticket.style.zIndex = ++topZIndex;
+// Make the ticket draggable
+ticket.onmousedown = function (e) {
+  ticket.style.zIndex = ++topZIndex;
+  let shiftX = e.clientX - ticket.getBoundingClientRect().left;
+  let shiftY = e.clientY - ticket.getBoundingClientRect().top;
 
-    let shiftX = e.clientX - ticket.getBoundingClientRect().left;
-    let shiftY = e.clientY - ticket.getBoundingClientRect().top;
+  function moveAt(pageX, pageY) {
+    ticket.style.left = pageX - shiftX + 'px';
+    ticket.style.top = pageY - shiftY + 'px';
+  }
 
-    function moveAt(pageX, pageY) {
-      ticket.style.left = pageX - shiftX + 'px';
-      ticket.style.top = pageY - shiftY + 'px';
-    }
+  function onMouseMove(e) {
+    moveAt(e.pageX, e.pageY);
+  }
 
-    function onMouseMove(e) {
-      moveAt(e.pageX, e.pageY);
-    }
+  document.addEventListener('mousemove', onMouseMove);
 
-    document.addEventListener('mousemove', onMouseMove);
-
-    ticket.onmouseup = function () {
-      document.removeEventListener('mousemove', onMouseMove);
-      ticket.onmouseup = null;
-    };
+  ticket.onmouseup = function () {
+    document.removeEventListener('mousemove', onMouseMove);
+    ticket.onmouseup = null;
   };
+};
 
-  ticket.ondragstart = function () {
-    return false;
-  };
+ticket.ondragstart = function () {
+  return false;
+};
 
   ticket.style.top = `${Math.random() * 80 + 10}%`;
   ticket.style.left = `${Math.random() * 70 + 10}%`;
@@ -95,18 +93,6 @@ function createTicket() {
 
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
-
-  // Escalation logic
-  setTimeout(() => ticket.classList.add("pulse"), 15000);       // 15s
-  setTimeout(() => {
-    ticket.classList.add("flash-blue");
-    ticket.classList.add("pulse");
-  }, 30000);  // 30s
-  setTimeout(() => {
-    ticket.classList.add("shake");
-    ticket.style.border = "2px solid red";
-    ticket.classList.add("pulse");
-  }, 60000); // 60s
 }
 
 function updateTimer() {
@@ -121,6 +107,7 @@ function updateTimer() {
   }
 }
 
+
 function spawnTicketsGradually() {
   createTicket();
 
@@ -133,6 +120,7 @@ function spawnTicketsGradually() {
 
   setTimeout(spawnTicketsGradually, delay);
 }
+
 
 window.onload = () => {
   timerInterval = setInterval(updateTimer, 1000);
