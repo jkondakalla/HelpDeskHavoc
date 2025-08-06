@@ -86,10 +86,12 @@ function createTicket() {
       // Apply feedback animation
       if (text === correct) {
         ticket.classList.add("blink-green");
-        score++;
+        score+=10;
         scoreDisplay.textContent = score;
       } else {
         ticket.classList.add("blink-red");
+        score-=5;
+        scoreDisplay.textContent = score;
       }
 
       // Wait for feedback animation to finish before removing
