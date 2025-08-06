@@ -1,9 +1,9 @@
-// script.js
-
 const gameArea = document.getElementById("gameArea");
 const scoreDisplay = document.querySelector(".score");
-let score = 0;
+const timerDisplay = document.getElementById("timer");
 
+let score = 0;
+let timeLeft = 300; // 5 minutes in seconds
 function getRandomMessage() {
   const category = categories[Math.floor(Math.random() * categories.length)];
   const message = category.messages[Math.floor(Math.random() * category.messages.length)];
@@ -60,7 +60,19 @@ function createTicket() {
   gameArea.appendChild(ticket);
 }
 
-// Spawn tickets randomly
+function updateTimer() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  if (timeLeft > 0) {
+    timeLeft--;
+  } else {
+    clearInterval(timerInterval);
+    // Optional: End game logic here
+  }
+}
+
 window.onload = () => {
   setInterval(createTicket, 3000);
+  timerInterval = setInterval(updateTimer, 1000);
 };
