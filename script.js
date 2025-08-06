@@ -31,6 +31,8 @@ function createTicket() {
 
 // Make the ticket draggable
 ticket.onmousedown = function (e) {
+  ticket.style.zIndex = 999;
+
   let shiftX = e.clientX - ticket.getBoundingClientRect().left;
   let shiftY = e.clientY - ticket.getBoundingClientRect().top;
 
