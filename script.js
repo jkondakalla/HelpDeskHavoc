@@ -105,18 +105,20 @@ function updateTimer() {
   }
 }
 
+
 function spawnTicketsGradually() {
   createTicket();
 
-  // Ramp up every 10 seconds
-  if (elapsedTime % 10000 === 0 && spawnDelay > minDelay) {
-    spawnDelay -= rampUpRate;
-  }
+  // Calculate a random delay that shrinks over time
+  const progress = 1 - timeLeft / 300; // 0 at start, 1 at end
+  const maxDelay = 4000; // max 4 seconds
+  const minDelay = 500;  // min 0.5 seconds
+  const currentMax = maxDelay - progress * (maxDelay - minDelay);
+  const delay = Math.random() * currentMax;
 
-  elapsedTime += spawnDelay;
-
-  setTimeout(spawnTicketsGradually, spawnDelay);
+  setTimeout(spawnTicketsGradually, delay);
 }
+
 
 window.onload = () => {
   timerInterval = setInterval(updateTimer, 1000);
