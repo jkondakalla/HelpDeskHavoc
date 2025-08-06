@@ -111,8 +111,8 @@ function spawnTicketsGradually() {
 
   // Calculate a random delay that shrinks over time
   const progress = 1 - timeLeft / 300; // 0 at start, 1 at end
-  const maxDelay = 4000; // max 4 seconds
-  const minDelay = 500;  // min 0.5 seconds
+  const maxDelay = 3000; // max 3 seconds
+  const minDelay = 100;  // min 0.1 seconds
   const currentMax = maxDelay - progress * (maxDelay - minDelay);
   const delay = Math.random() * currentMax;
 
