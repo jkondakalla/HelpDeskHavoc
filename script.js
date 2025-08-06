@@ -78,18 +78,26 @@ ticket.ondragstart = function () {
     const btn = document.createElement("button");
     btn.className = text === "Mark Malicious" ? "hurdle" : "option";
     btn.textContent = text;
-    btn.onclick = () => {
-      if (text === correct) {
-        ticket.classList.add("blink-green");
-        score++;
-        scoreDisplay.textContent = score;
-      } else {
-        ticket.classList.add("blink-red");
-      }
-      setTimeout(() => ticket.remove(), 300);
-    };
-    options.appendChild(btn);
-  });
+
+btn.onclick = () => {
+  // Pause escalation animations
+  ticket.classList.remove("escalate1", "escalate2", "escalate3", "shake");
+
+  // Apply feedback animation
+  if (text === correct) {
+    ticket.classList.add("blink-green");
+    score++;
+    scoreDisplay.textContent = score;
+  } else {
+    ticket.classList.add("blink-red");
+  }
+
+  // Wait for feedback animation to finish before removing
+  setTimeout(() => {
+    ticket.remove();
+  }, 600); // Increased to 600ms for better visibility
+};
+
 
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
