@@ -31,6 +31,9 @@ function createTicket() {
 
 // Make the ticket draggable
 ticket.onmousedown = function (e) {
+  // Raise z-index to bring ticket to front
+  ticket.style.zIndex = 1000;
+
   let shiftX = e.clientX - ticket.getBoundingClientRect().left;
   let shiftY = e.clientY - ticket.getBoundingClientRect().top;
 
@@ -42,6 +45,18 @@ ticket.onmousedown = function (e) {
   function onMouseMove(e) {
     moveAt(e.pageX, e.pageY);
   }
+
+  document.addEventListener('mousemove', onMouseMove);
+
+  ticket.onmouseup = function () {
+    document.removeEventListener('mousemove', onMouseMove);
+    ticket.onmouseup = null;
+
+    // Optionally reset z-index after drag
+    ticket.style.zIndex = '';
+  };
+};
+
 
   document.addEventListener('mousemove', onMouseMove);
 
