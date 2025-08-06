@@ -9,8 +9,6 @@ let spawnDelay = 3000; // Start at 3 seconds
 let minDelay = 500;    // Minimum delay between spawns
 let rampUpRate = 100;  // Reduce delay every 10 seconds
 let elapsedTime = 0;
-let topZIndex = 1000;
-
 
 function getRandomMessage() {
   const category = categories[Math.floor(Math.random() * categories.length)];
@@ -32,11 +30,7 @@ function createTicket() {
   ticket.className = "ticket";
 
 // Make the ticket draggable
-
 ticket.onmousedown = function (e) {
-  // Always bring to front
-  ticket.style.zIndex = ++topZIndex;
-
   let shiftX = e.clientX - ticket.getBoundingClientRect().left;
   let shiftY = e.clientY - ticket.getBoundingClientRect().top;
 
@@ -56,7 +50,6 @@ ticket.onmousedown = function (e) {
     ticket.onmouseup = null;
   };
 };
-
 
 ticket.ondragstart = function () {
   return false;
@@ -99,15 +92,13 @@ ticket.ondragstart = function () {
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
 
-  
-// Escalation logic
-setTimeout(() => ticket.classList.add("pulse"), 15000);       // 15s
-setTimeout(() => ticket.classList.add("flash-blue"), 30000);  // 30s
-setTimeout(() => {
-  ticket.classList.add("rainbow");
-  ticket.classList.add("pulse"); // reinforce pulsing
-}, 60000); // 60s
-
+  // Escalation logic
+  setTimeout(() => ticket.classList.add("pulse"), 15000);       // 15s
+  setTimeout(() => ticket.classList.add("flash-blue"), 30000);  // 30s
+  setTimeout(() => {
+    ticket.classList.add("rainbow");
+    ticket.classList.add("pulse"); // reinforce pulsing
+  }, 60000); // 60s
 }
 
 function updateTimer() {
