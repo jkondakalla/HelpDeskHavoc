@@ -30,32 +30,32 @@ function createTicket() {
   const ticket = document.createElement("div");
   ticket.className = "ticket";
 
-// Make the ticket draggable
-ticket.onmousedown = function (e) {
-  ticket.style.zIndex = ++topZIndex;
-  let shiftX = e.clientX - ticket.getBoundingClientRect().left;
-  let shiftY = e.clientY - ticket.getBoundingClientRect().top;
+  // Make the ticket draggable
+  ticket.onmousedown = function (e) {
+    ticket.style.zIndex = ++topZIndex;
+    let shiftX = e.clientX - ticket.getBoundingClientRect().left;
+    let shiftY = e.clientY - ticket.getBoundingClientRect().top;
 
-  function moveAt(pageX, pageY) {
-    ticket.style.left = pageX - shiftX + 'px';
-    ticket.style.top = pageY - shiftY + 'px';
-  }
+    function moveAt(pageX, pageY) {
+      ticket.style.left = pageX - shiftX + 'px';
+      ticket.style.top = pageY - shiftY + 'px';
+    }
 
-  function onMouseMove(e) {
-    moveAt(e.pageX, e.pageY);
-  }
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY);
+    }
 
-  document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mousemove', onMouseMove);
 
-  ticket.onmouseup = function () {
-    document.removeEventListener('mousemove', onMouseMove);
-    ticket.onmouseup = null;
+    ticket.onmouseup = function () {
+      document.removeEventListener('mousemove', onMouseMove);
+      ticket.onmouseup = null;
+    };
   };
-};
 
-ticket.ondragstart = function () {
-  return false;
-};
+  ticket.ondragstart = function () {
+    return false;
+  };
 
   ticket.style.top = `${Math.random() * 80 + 10}%`;
   ticket.style.left = `${Math.random() * 70 + 10}%`;
@@ -79,35 +79,39 @@ ticket.ondragstart = function () {
     btn.className = text === "Mark Malicious" ? "hurdle" : "option";
     btn.textContent = text;
 
-btn.onclick = () => {
-  // Pause escalation animations
-  ticket.classList.remove("escalate1", "escalate2", "escalate3", "shake");
+    btn.onclick = () => {
+      // Pause escalation animations
+      ticket.classList.remove("escalate1", "escalate2", "escalate3", "shake");
 
-  // Apply feedback animation
-  if (text === correct) {
-    ticket.classList.add("blink-green");
-    score++;
-    scoreDisplay.textContent = score;
-  } else {
-    ticket.classList.add("blink-red");
-  }
+      // Apply feedback animation
+      if (text === correct) {
+        ticket.classList.add("blink-green");
+        score++;
+        scoreDisplay.textContent = score;
+      } else {
+        ticket.classList.add("blink-red");
+      }
 
-  // Wait for feedback animation to finish before removing
-  setTimeout(() => {
-    ticket.remove();
-  }, 600); // Increased to 600ms for better visibility
-};
+      // Wait for feedback animation to finish before removing
+      setTimeout(() => {
+        ticket.remove();
+      }, 600); // Increased to 600ms for better visibility
+    };
 
+    options.appendChild(btn);
+  });
 
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
+
   // Escalate ticket over time
-setTimeout(() => ticket.classList.add("escalate1"), 15000); // after 15s
-setTimeout(() => ticket.classList.add("escalate2"), 30000); // after 30s
-setTimeout(() => {
-  ticket.classList.add("escalate3");
-  ticket.classList.add("shake"); // optional: adds red border + shake
-}, 60000); // after 60s
+  setTimeout(() => ticket.classList.add("escalate1"), 15000); // after 15s
+  setTimeout(() => ticket.classList.add("escalate2"), 30000); // after 30s
+  setTimeout(() => {
+    ticket.classList.add("escalate3");
+    ticket.classList.add("shake"); // optional: adds red border + shake
+  }, 60000); // after 60s
+}
 
 function updateTimer() {
   const minutes = Math.floor(timeLeft / 60);
@@ -121,7 +125,6 @@ function updateTimer() {
   }
 }
 
-
 function spawnTicketsGradually() {
   createTicket();
 
@@ -134,7 +137,6 @@ function spawnTicketsGradually() {
 
   setTimeout(spawnTicketsGradually, delay);
 }
-
 
 window.onload = () => {
   timerInterval = setInterval(updateTimer, 1000);
