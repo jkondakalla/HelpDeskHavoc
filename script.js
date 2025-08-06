@@ -93,6 +93,14 @@ ticket.ondragstart = function () {
 
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
+  // Escalate ticket over time
+setTimeout(() => ticket.classList.add("escalate1"), 15000); // after 15s
+setTimeout(() => ticket.classList.add("escalate2"), 30000); // after 30s
+setTimeout(() => {
+  ticket.classList.add("escalate3");
+  ticket.classList.add("shake"); // optional: adds red border + shake
+}, 60000); // after 60s
+
 }
 
 function updateTimer() {
