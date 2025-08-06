@@ -108,14 +108,14 @@ function updateTimer() {
 
 function spawnTicketsGradually() {
   createTicket();
- // Calculate a random delay that shrinks over time
+
+  // Calculate a random delay that shrinks over time
   const progress = 1 - timeLeft / 300; // 0 at start, 1 at end
   const maxDelay = 3000; // max 3 seconds
-  const minDelay = 250;  // min 0.25 seconds
+  const minDelay = 100;  // min 0.1 seconds
   const currentMax = maxDelay - progress * (maxDelay - minDelay);
   const delay = Math.random() * currentMax;
 
-  setTimeout(spawnTicketsGradually, spawnDelay);
   setTimeout(spawnTicketsGradually, delay);
 }
 
