@@ -109,8 +109,6 @@ setTimeout(() => {
   ticket.classList.add("shake"); // optional: adds red border + shake
 }, 60000); // after 60s
 
-}
-
 function updateTimer() {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
