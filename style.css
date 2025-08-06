@@ -146,13 +146,13 @@ body {
   50% { background-color: #f44336; }
   100% { background-color: #2c2f33; }
 }
+
 /* Pulse Animation */
 @keyframes pulseSize {
   0% { transform: scale(1); }
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
-
 .pulse {
   animation: pulseSize 1s infinite;
 }
@@ -163,7 +163,6 @@ body {
   50% { background-color: #007bff; }
   100% { background-color: #2c2f33; }
 }
-
 .flash-blue {
   animation: flashBlue 0.8s infinite;
 }
@@ -177,7 +176,6 @@ body {
   80% { background-color: blue; }
   100% { background-color: violet; }
 }
-
 .rainbow {
   animation: rainbowPulse 1.2s infinite;
 }
