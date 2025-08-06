@@ -4,6 +4,12 @@ const timerDisplay = document.getElementById("timer");
 
 let score = 0;
 let timeLeft = 300; // 5 minutes in seconds
+let timerInterval;
+let spawnDelay = 3000; // Start at 3 seconds
+let minDelay = 500;    // Minimum delay between spawns
+let rampUpRate = 100;  // Reduce delay every 10 seconds
+let elapsedTime = 0;
+
 function getRandomMessage() {
   const category = categories[Math.floor(Math.random() * categories.length)];
   const message = category.messages[Math.floor(Math.random() * category.messages.length)];
@@ -72,7 +78,20 @@ function updateTimer() {
   }
 }
 
+function spawnTicketsGradually() {
+  createTicket();
+
+  // Ramp up every 10 seconds
+  if (elapsedTime % 10000 === 0 && spawnDelay > minDelay) {
+    spawnDelay -= rampUpRate;
+  }
+
+  elapsedTime += spawnDelay;
+
+  setTimeout(spawnTicketsGradually, spawnDelay);
+}
+
 window.onload = () => {
-  setInterval(createTicket, 3000);
   timerInterval = setInterval(updateTimer, 1000);
+  spawnTicketsGradually();
 };
