@@ -1,4 +1,3 @@
-
 const gameArea = document.getElementById("gameArea");
 const scoreDisplay = document.querySelector(".score");
 const timerDisplay = document.getElementById("timer");
