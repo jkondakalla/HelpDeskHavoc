@@ -169,4 +169,22 @@ const categories = [
       "My mouse only works when the fan is off."
     ]
   }
+  {
+  "name": "Mark Malicious",
+  "messages": [
+    "My computer says 'You've been hacked!' in Comic Sans.",
+    "I got a pop-up that says 'Send Bitcoin or else.'",
+    "Someone emailed me asking for my password.",
+    "My files are encrypted and there's a ransom note.",
+    "The printer printed a page that says 'We own you now.'",
+    "I clicked a link and now my desktop is a skull.",
+    "My antivirus was disabled remotely.",
+    "A voice from my speakers said 'We are watching you.'",
+    "My webcam turned on and started recording without permission.",
+    "I received an email from 'CEO@notarealcompany.biz' asking for wire transfers.",
+    "My browser redirected to a site called 'DarkWebDeals.net'.",
+    "The shared drive now contains a folder named 'DOOM.exe'."
+  ]
+}
+
 ];
