@@ -98,6 +98,16 @@ ticket.ondragstart = function () {
 
   ticket.appendChild(options);
   gameArea.appendChild(ticket);
+
+  
+// Escalation logic
+setTimeout(() => ticket.classList.add("pulse"), 15000);       // 15s
+setTimeout(() => ticket.classList.add("flash-blue"), 30000);  // 30s
+setTimeout(() => {
+  ticket.classList.add("rainbow");
+  ticket.classList.add("pulse"); // reinforce pulsing
+}, 60000); // 60s
+
 }
 
 function updateTimer() {
