@@ -61,4 +61,6 @@ function createTicket() {
 }
 
 // Spawn tickets randomly
-setInterval(createTicket, 3000);
+window.onload = () => {
+  setInterval(createTicket, 3000);
+};
